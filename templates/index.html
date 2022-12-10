@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} PokeCards {% endblock %}</h1>
+    {% for card in cards %}
+        <a href="{{ url_for('card', card_id=card['id']) }}">
+            <h2>{{ card['name'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ card['status'] }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}

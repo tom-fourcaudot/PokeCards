@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ card['name'] }} {% endblock %}</h2>
+    <span class="badge badge-primary">{{ card['status'] }}</span>
+    <a href="{{ url_for('edit', id=card['id']) }}">
+        <span class="badge badge-warning">Edit</span>
+    </a>
+    <p>Click on your card to show current price</p>
+    <a href="{{ card['link'] }}" target="_blank">
+        <img src="{{ card['img'] }}" alt="{{ card['name'] }}">
+    </a>
+    {% if card['price'] %}
+        <p>{{ card['price'] }} €</p>
+    {% else %}
+        <p>No price defined for this card</p>
+    {% endif %}
+{% endblock content %}

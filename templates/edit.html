@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit "{{ card['name'] }}" {% endblock %}</h1>
+<form action="{{ url_for('delete', id=card['id']) }}" method="POST">
+    <input type="submit" value="Delete card"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Are you sure you want to delete this card?')">
+</form>
+
+<form method="post">
+    <div class="form-group">
+        <label for="name">Card name</label>
+        <input type="text" name="name"
+               placeholder="Card name" class="form-control"
+               value="{{ request.form['name'] or card['name'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="status">Card state</label>
+        <input type="text" name="status"
+               placeholder="Card status" class="form-control"
+               value="{{ request.form['status'] or card['status'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="url">Card url</label>
+        <input type="url" name="url"
+               placeholder="Card url" class="form-control"
+               value="{{ request.form['url'] or card['link'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Card price</label>
+        <input type="number" step="0.01" name="price"
+               placeholder="Card price" class="form-control"
+               value="{{ request.form['price'] or card['price'] }}"></input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Comfirm</button>
+    </div>
+</form>
+<hr>
+{% endblock %}
