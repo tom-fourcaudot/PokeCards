@@ -50,7 +50,7 @@ def create():
                          (name, status, url, getImg(url)))
             conn.commit()
             conn.close()
-            flash('"{}" was successfully deleted!'.format(name), 'info')
+            flash('"{}" was successfully created!'.format(name), 'info')
             return redirect(url_for('index'))
     return render_template('create.html')
 
